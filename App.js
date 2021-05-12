@@ -1,23 +1,36 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
 export default function App() {
+  const [name, setName] = useState('kaka');
+  const [person, setPerson] = useState({ name: 'mario', age: 40 });
+
+  const clickHandler = () => {
+    setName('ricardo');
+    setPerson({ name: 'maka', age: 50 });
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
 
       <View style={styles.header}>
-        <Text style={styles.boldText}> Hello world! </Text>
+        <Text style={styles.boldText}> Hello world! {name} </Text>
+        {/* <Text>
+          His name is {person.name} and his age is {person.age}{' '}
+        </Text> */}
+        <Text>Enter Name:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="e.g. johe"
+          onChangeText={(value) => setName(value)}
+          keyboardType="numeric"
+          multiline
+        />
       </View>
-      <View style={styles.body}>
-        <Text style={styles.boldText}>
-          Lorem ipsum dolor sit amet.
-          <Text>inherit</Text>
-          Lorem ipsum dolor sit amet.
-        </Text>
-        <Text> Lorem ipsum dolor sit amet.</Text>
-        <Text> Lorem ipsum dolor sit amet.</Text>
+      <View style={styles.buttonContainer}>
+        <Button title="update Name" onPress={clickHandler} />
       </View>
     </View>
   );
@@ -31,14 +44,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   header: {
-    backgroundColor: 'pink',
+    backgroundColor: 'yellow',
     padding: 20,
   },
   boldText: {
+    fontSize: 20,
     fontWeight: 'bold',
   },
-  body: {
-    backgroundColor: 'yellow',
-    padding: 20,
+  buttonContainer: {
+    marginTop: 20,
+    borderWidth: 1,
+    borderColor: 'skyblue',
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#777',
+    padding: 8,
+    margin: 10,
+    width: 200,
   },
 });
