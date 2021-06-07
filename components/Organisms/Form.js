@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
-export default function Header() {
+export default function Form() {
   return (
     <View style={styles.header}>
       <Text style={styles.title}>My TODOs</Text>
