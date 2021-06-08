@@ -31,7 +31,7 @@ export default function Home({ navigation }) {
   };
 
   return (
-    <View style={globalStyles.container}>
+    <View style={styles.container}>
       <Text style={globalStyles.titleText}> Home Screen </Text>
       <FlatList
         data={reviews}
@@ -39,15 +39,27 @@ export default function Home({ navigation }) {
           <TouchableOpacity
             onPress={() => navigation.navigate('ReviewDetails', item)}
           >
-            <Text style={globalStyles.titleText}>{item.title}</Text>
+            <Text style={styles.titleTexts}>{item.title}</Text>
           </TouchableOpacity>
         )}
       />
 
-      <Btn
+      {/* <Btn
         onClick1={() => console.log('hi')}
         onClick2={() => console.log('hello')}
-      />
+      /> */}
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: 100,
+    paddingHorizontal: 15,
+  },
+  titleTexts: {
+    fontSize: 20,
+    fontWeight: '500',
+  },
+});
